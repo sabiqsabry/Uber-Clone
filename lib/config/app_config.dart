@@ -1,5 +1,7 @@
+import 'env.dart';
+
 class AppConfig {
-  static const String googleMapsApiKey = 'YOUR_API_KEY_HERE';
+  static String get googleMapsApiKey => Env.googleMapsApiKey;
 
   // App-wide constants
   static const String appName = 'RideNow';

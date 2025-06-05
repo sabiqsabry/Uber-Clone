@@ -39,11 +39,33 @@ flutter pub get
 3. Configure Google Maps API Key:
    - Get an API key from the [Google Cloud Console](https://console.cloud.google.com)
    - Enable Maps SDK for Android and iOS
-   - Add your API key to `lib/config/app_config.dart`
+   - Create a `.env` file in the root directory
+   - Add your API key to the `.env` file:
+     ```
+     GOOGLE_MAPS_API_KEY=your_api_key_here
+     ```
+   - For iOS, update the API key in `ios/Runner/AppDelegate.swift`
+   - For Android, add the API key to `android/app/src/main/AndroidManifest.xml`:
+     ```xml
+     <meta-data
+         android:name="com.google.android.geo.API_KEY"
+         android:value="${GOOGLE_MAPS_API_KEY}" />
+     ```
 
 4. Run the app:
 ```bash
 flutter run
+```
+
+## Environment Setup
+
+The app uses environment variables for sensitive configuration. Make sure to:
+
+1. Never commit the `.env` file to version control
+2. Keep your API keys secure
+3. Create a `.env` file with the following structure:
+```
+GOOGLE_MAPS_API_KEY=your_api_key_here
 ```
 
 ## Project Structure
@@ -69,6 +91,7 @@ lib/
 - http: ^0.13.6
 - intl: ^0.18.1
 - flutter_secure_storage: ^9.0.0
+- flutter_dotenv: ^5.1.0
 
 ## Contributing
 
